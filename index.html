@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About EarnWell - Our Mission, Values, and Story</title> <!-- Changed Title -->
+    <!-- Link to Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Link to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Global Styles & Variables (Theme Consistency) --- */
+        :root {
+            --primary-bg: #eff3ff;
+            --secondary-bg: #ffffff;
+            --tertiary-bg: #f8fafc;
+            --text-dark: #1e293b;
+            --text-light: #475569;
+            --text-lighter: #64748b;
+            --accent-color: #4f46e5;
+            --accent-hover: #4338ca;
+            --border-color: #e2e8f0;
+            --shadow-color: rgba(0, 0, 0, 0.08);
+            --shadow-hover-color: rgba(79, 70, 229, 0.15); /* Accent shadow on hover */
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-dark);
+            line-height: 1.7;
+            font-size: 16px;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        main { flex: 1; }
+
+        .container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+        .container-narrow { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+
+        h1, h2, h3 { font-weight: 600; color: var(--text-dark); margin-bottom: 0.8em; }
+        h1 { font-size: 2.8rem; line-height: 1.2; }
+        h2 { font-size: 2rem; }
+        h3 { font-size: 1.3rem; }
+        p { margin-bottom: 1em; color: var(--text-light); }
+        a { text-decoration: none; color: var(--accent-color); transition: color 0.3s ease; }
+        a:hover { color: var(--accent-hover); }
+        img { max-width: 100%; height: auto; display: block; border-radius: 8px; }
+        section { padding: 80px 0; overflow: hidden; /* Prevent animation overflows */}
+        .section-title { text-align: center; margin-bottom: 60px; }
+        .section-title h2 { margin-bottom: 10px; }
+        .section-title p { max-width: 650px; margin: 0 auto; color: var(--text-lighter); }
+
+        .btn { display: inline-block; background-color: var(--accent-color); color: #fff; padding: 12px 28px; border-radius: 8px; font-weight: 500; font-size: 1rem; transition: background-color 0.3s ease, transform 0.2s ease; border: none; cursor: pointer; text-align: center; }
+        .btn:hover { background-color: var(--accent-hover); transform: translateY(-3px); text-decoration: none; }
+
+        /* --- Header/Navigation (Same Structure) --- */
+        .main-header { background-color: var(--secondary-bg); padding: 15px 0; box-shadow: 0 2px 10px var(--shadow-color); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--border-color); }
+        .main-header .container { display: flex; justify-content: space-between; align-items: center; position: relative; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--accent-color); }
+        .main-nav { display: flex; }
+        .main-nav a { margin-left: 25px; font-weight: 500; color: var(--text-dark); position: relative; padding-bottom: 5px; }
+        .main-nav a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: var(--accent-color); transition: width 0.3s ease; }
+        .main-nav a:hover::after, .main-nav a.active-nav::after { width: 100%; }
+        .main-nav a:hover, .main-nav a.active-nav { color: var(--accent-color); text-decoration: none;}
+        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; background: none; border: none; color: var(--text-dark); }
+
+        /* --- About Us Page Specific Styles --- */
+
+        /* Hero Section */
+        #about-hero {
+            background: linear-gradient(rgba(239, 243, 255, 0.8), rgba(239, 243, 255, 0.8)), url('https://images.unsplash.com/photo-1522071820081-009f0129c7da?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-4.0.3&q=80&w=1200') center center/cover no-repeat;
+            padding: 100px 0;
+            text-align: center;
+            color: var(--text-dark);
+        }
+        #about-hero h1 { animation: fadeInUp 0.5s ease-out backwards 0.1s; }
+        #about-hero p { font-size: 1.2rem; max-width: 700px; margin: 0 auto 30px auto; color: var(--text-dark); font-weight: 400; animation: fadeInUp 0.5s ease-out backwards 0.2s; }
+        #about-hero .btn { animation: fadeInUp 0.5s ease-out backwards 0.3s; }
+
+        /* Mission & Vision Section */
+        #mission-vision { background-color: var(--secondary-bg); }
+        .mission-vision-grid {
+             display: grid;
+             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+             gap: 40px;
+             align-items: center;
+        }
+        .mission-vision-item { animation: fadeInUp 0.6s ease-out backwards; }
+        .mission-vision-item:nth-child(1) { animation-delay: 0.2s; }
+        .mission-vision-item:nth-child(2) { animation-delay: 0.4s; }
+        .mission-vision-item i { font-size: 2.5rem; color: var(--accent-color); margin-bottom: 15px; }
+        .mission-vision-item h3 { font-size: 1.5rem; margin-bottom: 15px; }
+        .mission-vision-item p { color: var(--text-light); font-size: 1.05rem; }
+
+        /* Our Story Section */
+        #our-story { background-color: var(--primary-bg); }
+        .story-content {
+             display: grid;
+             grid-template-columns: 1fr 1.2fr; /* Text | Image */
+             gap: 50px;
+             align-items: center;
+        }
+        .story-text { animation: fadeInUp 0.6s ease-out backwards 0.2s; }
+        .story-image { text-align: center; animation: fadeInScaleUp 0.8s ease-out backwards 0.4s; }
+        .story-image img { box-shadow: 0 10px 25px var(--shadow-color); }
+        .story-text h2 { margin-bottom: 20px; }
+        .story-text p { font-size: 1.05rem; }
+
+        /* Our Values Section */
+        #our-values { background-color: var(--secondary-bg); }
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .value-card {
+            background-color: var(--tertiary-bg);
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 0.6s ease-out backwards;
+        }
+         /* Stagger animation delays */
+        .values-grid .value-card:nth-child(1) { animation-delay: 0.1s; }
+        .values-grid .value-card:nth-child(2) { animation-delay: 0.2s; }
+        .values-grid .value-card:nth-child(3) { animation-delay: 0.3s; }
+        .values-grid .value-card:nth-child(4) { animation-delay: 0.4s; }
+
+        .value-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px var(--shadow-hover-color);
+        }
+        .value-icon { font-size: 2.5rem; color: var(--accent-color); margin-bottom: 20px; }
+        .value-card h3 { font-size: 1.2rem; margin-bottom: 10px; }
+        .value-card p { font-size: 0.95rem; color: var(--text-light); }
+
+        /* Meet the Team Section */
+        #meet-the-team { background-color: var(--primary-bg); }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+        .team-member {
+            background-color: var(--secondary-bg);
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px var(--shadow-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 0.6s ease-out backwards;
+        }
+        .team-grid .team-member:nth-child(1) { animation-delay: 0.2s; }
+        .team-grid .team-member:nth-child(2) { animation-delay: 0.3s; }
+        .team-grid .team-member:nth-child(3) { animation-delay: 0.4s; }
+        .team-grid .team-member:nth-child(4) { animation-delay: 0.5s; }
+
+
+        .team-member:hover {
+             transform: translateY(-5px);
+             box-shadow: 0 8px 25px var(--shadow-hover-color);
+        }
+        .team-member img {
+             width: 130px;
+             height: 130px;
+             border-radius: 50%;
+             object-fit: cover;
+             margin: 0 auto 20px auto;
+             border: 4px solid var(--secondary-bg);
+             box-shadow: 0 0 0 3px var(--accent-color);
+        }
+        .team-member h3 { font-size: 1.15rem; margin-bottom: 5px; }
+        .team-member .title { font-size: 0.9rem; color: var(--accent-color); font-weight: 500; margin-bottom: 15px; display: block; }
+        .team-member p { font-size: 0.9rem; color: var(--text-lighter); margin-bottom: 0; } /* Optional short bio */
+        .team-socials { margin-top: 15px; }
+        .team-socials a {
+             color: var(--text-light);
+             margin: 0 8px;
+             font-size: 1.1rem;
+             transition: color 0.3s ease;
+        }
+        .team-socials a:hover { color: var(--accent-color); }
+
+         /* Impact/Stats Section */
+        #impact-stats {
+            background: linear-gradient(rgba(79, 70, 229, 0.85), rgba(79, 70, 229, 0.85)), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-4.0.3&q=80&w=1200') center center/cover fixed no-repeat;
+            padding: 80px 0;
+            color: #fff;
+            text-align: center;
+        }
+        #impact-stats h2 { color: #fff; margin-bottom: 50px; }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        .stat-item { animation: fadeInUp 0.6s ease-out backwards; }
+        .stats-grid .stat-item:nth-child(1) { animation-delay: 0.2s; }
+        .stats-grid .stat-item:nth-child(2) { animation-delay: 0.4s; }
+        .stats-grid .stat-item:nth-child(3) { animation-delay: 0.6s; }
+
+        .stat-number { font-size: 2.5rem; font-weight: 700; display: block; margin-bottom: 5px; }
+        .stat-label { font-size: 1rem; opacity: 0.85; }
+
+
+        /* --- Footer (Same) --- */
+        .main-footer { background-color: #1e293b; color: #cbd5e1; padding: 50px 0 20px 0; margin-top: auto; }
+        .main-footer .container { /* Standard container */ }
+        .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; margin-bottom: 40px; }
+        .footer-col { flex: 1; min-width: 200px; margin-bottom: 20px; }
+        .footer-col h4 { color: #fff; margin-bottom: 20px; font-size: 1.1rem; font-weight: 600; position: relative; padding-bottom: 10px; }
+        .footer-col h4::after { content: ''; position: absolute; left: 0; bottom: 0; width: 40px; height: 2px; background-color: var(--accent-color); }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col ul li a { color: #cbd5e1; transition: color 0.3s ease, padding-left 0.3s ease; }
+        .footer-col ul li a:hover { color: #fff; padding-left: 5px; }
+        .footer-socials a { display: inline-block; color: #fff; background-color: rgba(255, 255, 255, 0.15); width: 40px; height: 40px; line-height: 40px; border-radius: 50%; text-align: center; margin-right: 10px; font-size: 1rem; transition: background-color 0.3s ease, transform 0.3s ease; }
+        .footer-socials a:hover { background-color: var(--accent-color); transform: scale(1.1); }
+        .footer-bottom { border-top: 1px solid #334155; padding-top: 25px; text-align: center; font-size: 0.9rem; color: #94a3b8; }
+        .footer-transparency-note { font-size: 0.85rem; margin-top: 10px; opacity: 0.8; }
+
+
+        /* --- Animations --- */
+        @keyframes fadeInScaleUp { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-100%); } to { opacity: 1; transform: translateY(0); } }
+
+
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+            h1 { font-size: 2.4rem; } h2 { font-size: 1.8rem; } section { padding: 60px 0; }
+            #about-hero { padding: 80px 0; }
+            .story-content { grid-template-columns: 1fr; text-align: center; }
+            .story-image { order: -1; margin-bottom: 30px; } /* Move image above text on tablet */
+            .team-grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+
+             /* Responsive Nav */
+            .menu-toggle { display: block; position: absolute; right: 20px; top: 50%; transform: translateY(-50%); }
+            .main-nav { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background-color: var(--secondary-bg); padding: 15px 0; box-shadow: 0 4px 10px var(--shadow-color); text-align: center; }
+            .main-nav.active { display: flex; }
+            .main-nav a { margin: 10px 20px; padding: 8px 0; width: auto; }
+            .main-nav a::after { display: none; }
+            .main-nav a:hover { background-color: var(--primary-bg); }
+        }
+
+        @media (max-width: 768px) {
+             h1 { font-size: 2rem; }
+             #about-hero p { font-size: 1.1rem; }
+             .mission-vision-grid { grid-template-columns: 1fr; text-align: center; }
+             .values-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+             .team-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+             .stats-grid { grid-template-columns: 1fr; gap: 40px; } /* Stack stats */
+             .stat-number { font-size: 2.2rem; }
+             .footer-content { text-align: center; }
+             .footer-col { flex-basis: 100%; margin-bottom: 30px; align-items: center; }
+             .footer-col h4::after { left: 50%; transform: translateX(-50%); }
+             .footer-col ul li a:hover { padding-left: 0; }
+        }
+
+        @media (max-width: 576px) {
+             body { font-size: 15px; }
+             h1 { font-size: 1.8rem; } h2 { font-size: 1.6rem; } h3 { font-size: 1.2rem; }
+             .logo { font-size: 1.3rem; }
+             .container { padding: 0 15px; }
+             .container-narrow { padding: 0 15px; }
+             #about-hero { padding: 60px 0; }
+             #about-hero p { font-size: 1rem; }
+             .story-content { gap: 30px; }
+             .values-grid { grid-template-columns: 1fr; }
+             .team-grid { grid-template-columns: 1fr; }
+             .team-member img { width: 110px; height: 110px; }
+             .stat-number { font-size: 2rem; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header (Update active link) -->
+    <header class="main-header">
+        <div class="container"> <!-- Standard container -->
+            <a href="index.html" class="logo">Your Inspire IT</a>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+             <nav class="main-nav" id="main-nav">
+                <a href="index.html">Home</a>
+                <a href="about.html" class="active-nav">About Us</a> <!-- Mark page active -->
+                <a href="services.html">Contact Us</a>
+                <a href="help.html">Report</a>
+                <a href="contact.html">FAQ</a>
+                <a href="auth.html">Login/Sign Up</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- About Hero Section -->
+        <section id="about-hero">
+            <div class="container">
+                <h1>Connecting Talent with Opportunity, Globally</h1>
+                <p>Your Inspire IT is dedicated to building a bridge between individuals seeking flexible online work and businesses needing quality data and task completion.</p>
+                <a href="#our-story" class="btn">Learn Our Story</a>
+            </div>
+        </section>
+
+         <!-- Mission & Vision Section -->
+         <section id="mission-vision">
+             <div class="container">
+                  <div class="mission-vision-grid">
+                      <div class="mission-vision-item">
+                          <i class="fas fa-rocket"></i>
+                          <h3>Our Mission</h3>
+                          <p>To empower individuals worldwide by providing accessible, reliable, and rewarding online work opportunities, fostering economic independence and skill development.</p>
+                      </div>
+                       <div class="mission-vision-item">
+                           <i class="fas fa-bullseye"></i>
+                           <h3>Our Vision</h3>
+                          <p>To be the most trusted and user-centric global platform for micro-tasking and online work, recognized for fairness, transparency, and positive community impact.</p>
+                      </div>
+                  </div>
+             </div>
+         </section>
+
+        <!-- Our Story Section -->
+        <section id="our-story">
+             <div class="container">
+                 <div class="story-content">
+                      <div class="story-text">
+                          <h2>Our Journey</h2>
+                          <p>Founded in 2022 by a team passionate about the future of work, EarnWell started with a simple idea: make legitimate online earning opportunities accessible to everyone, regardless of location.</p>
+                          <p>We saw the growing need for flexible work and the challenges businesses faced in obtaining high-quality data for tasks like AI training and market research. We decided to build a platform that addresses both needs ethically and efficiently.</p>
+                           <p>From humble beginnings, we've grown into a thriving community, constantly improving our platform based on user feedback and technological advancements. Our commitment remains the same: creating value for both our users and clients.</p>
+                      </div>
+                      <div class="story-image">
+                           <!-- Replace with a relevant image (team, abstract graphic, timeline?) -->
+                          <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-4.0.3&q=80&w=800" alt="Team collaborating around a table">
+                      </div>
+                 </div>
+            </div>
+        </section>
+
+        <!-- Our Values Section -->
+        <section id="our-values">
+             <div class="container">
+                 <div class="section-title">
+                     <h2>Our Core Values</h2>
+                     <p>These principles guide every decision we make and define the EarnWell experience.</p>
+                 </div>
+                 <div class="values-grid">
+                      <!-- Value 1 -->
+                     <div class="value-card">
+                          <i class="fas fa-eye value-icon"></i>
+                         <h3>Transparency</h3>
+                         <p>Clear communication about tasks, payouts, and platform policies. We believe in honest expectations.</p>
+                     </div>
+                      <!-- Value 2 -->
+                     <div class="value-card">
+                         <i class="fas fa-shield-alt value-icon"></i>
+                         <h3>Security</h3>
+                         <p>Protecting user data and financial information is paramount. We employ robust security measures.</p>
+                     </div>
+                      <!-- Value 3 -->
+                     <div class="value-card">
+                         <i class="fas fa-balance-scale value-icon"></i>
+                         <h3>Fairness</h3>
+                         <p>Striving for fair compensation for completed work and equitable access to opportunities.</p>
+                     </div>
+                      <!-- Value 4 -->
+                     <div class="value-card">
+                          <i class="fas fa-users-cog value-icon"></i>
+                         <h3>Community</h3>
+                         <p>Building a supportive and respectful environment for our users and clients worldwide.</p>
+                     </div>
+                 </div>
+             </div>
+        </section>
+
+        <!-- Meet the Team Section (Optional - use placeholders or real info) -->
+        <section id="meet-the-team" style="display: none;">
+            <div class="container">
+                 <div class="section-title">
+                     <h2>Meet the Team (Optional)</h2>
+                     <p>The dedicated individuals working behind the scenes to make EarnWell possible.</p>
+                 </div>
+                 <div class="team-grid">
+                     <!-- Team Member 1 -->
+                     <div class="team-member">
+                         <img src="https://via.placeholder.com/150/771796" alt="Team Member Name"> <!-- Placeholder Image -->
+                         <h3>[Member Name]</h3>
+                         <span class="title">Founder & CEO</span>
+                         <p>Brief description or quote about their vision.</p>
+                         <div class="team-socials">
+                             <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                             <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                         </div>
+                     </div>
+                      <!-- Team Member 2 -->
+                      <div class="team-member">
+                         <img src="https://via.placeholder.com/150/24f355" alt="Team Member Name"> <!-- Placeholder Image -->
+                         <h3>[Member Name]</h3>
+                         <span class="title">Head of Operations</span>
+                         <p>Focuses on platform efficiency and user support.</p>
+                          <div class="team-socials">
+                             <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                         </div>
+                     </div>
+                      <!-- Team Member 3 -->
+                      <div class="team-member">
+                         <img src="https://via.placeholder.com/150/d32776" alt="Team Member Name"> <!-- Placeholder Image -->
+                         <h3>[Member Name]</h3>
+                         <span class="title">Lead Developer</span>
+                          <p>Passionate about building a secure and scalable platform.</p>
+                         <div class="team-socials">
+                              <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                             <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                         </div>
+                     </div>
+                     <!-- Team Member 4 -->
+                      <div class="team-member">
+                         <img src="https://via.placeholder.com/150/f66b97" alt="Team Member Name"> <!-- Placeholder Image -->
+                         <h3>[Member Name]</h3>
+                         <span class="title">Community Manager</span>
+                         <p>Dedicated to supporting and engaging with our users.</p>
+                          <div class="team-socials">
+                              <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                              <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                         </div>
+                     </div>
+                 </div>
+            </div>
+        </section>
+
+        <!-- Impact / Statistics Section -->
+         <section id="impact-stats">
+             <div class="container">
+                  <h2>Our Impact So Far</h2>
+                  <div class="stats-grid">
+                       <div class="stat-item">
+                           <span class="stat-number">3800+</span> <!-- e.g., 100,000+ -->
+                           <span class="stat-label">Registered Users</span>
+                       </div>
+                        <div class="stat-item">
+                            <span class="stat-number">569K+</span> <!-- e.g., 5M+ -->
+                           <span class="stat-label">Tasks Completed</span>
+                       </div>
+                        <div class="stat-item">
+                            <span class="stat-number">৳787K+</span> <!-- e.g., $500K+ -->
+                           <span class="stat-label">Earnings Paid Out</span>
+                       </div>
+                  </div>
+             </div>
+         </section>
+
+    </main>
+
+    <!-- Footer (Same Structure) -->
+     <footer class="main-footer">
+        <div class="container"> <!-- Standard container -->
+            <div class="footer-content">
+                <!-- Footer columns -->
+                 <div class="footer-col"><h4>About Us</h4><ul><li><a href="https://YrInspireIT.github.io/error">Our Mission</a></li><li><a href="#">How it Works</a></li><li><a href="#">Blog</a></li></ul></div>
+                 <div class="footer-col"><h4>Support</h4><ul><li><a href="https://YrInspireIT.github.io/error">Help Center / FAQ</a></li><li><a href="https://YrInspireIT.github.io/error">Contact Us</a></li><li><a href="#">Report</a></li><li><a href="#">Payment Info</a></li></ul></div>
+                 <div class="footer-col"><h4>Legal & Transparency</h4><ul><li><a href="https://YrInspireIT.github.io/error">Terms of Service</a></li><li><a href="https://YrInspireIT.github.io/error">Privacy Policy</a></li><li><a href="https://YrInspireIT.github.io/error">Cookie Policy</a></li><li><a href="https://YrInspireIT.github.io/error">Earning Disclaimer</a></li></ul></div>
+                 <div class="footer-col" style="display: none;"><h4>Connect With Us</h4><div class="footer-socials"><a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a><a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a></div></div>
+            </div>
+            <div class="footer-bottom">
+                 © 2022-2025 Your Inspire IT. All Rights Reserved.
+              
+            </div>
+        </div>
+     </footer>
+
+    <script>
+        // --- Mobile Menu Toggle ---
+        const menuToggle = document.getElementById('menu-toggle');
+        const mainNav = document.getElementById('main-nav');
+        if (menuToggle && mainNav) {
+            menuToggle.addEventListener('click', () => {
+                mainNav.classList.toggle('active');
+                const icon = menuToggle.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            });
+        }
+
+        // Optional: Add counter animation JS if needed for stats
+        // This template doesn't include it for simplicity.
+
+    </script>
+
+</body>
+</html>
